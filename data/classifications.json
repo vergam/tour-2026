@@ -1,8 +1,62 @@
 {
-  "updated_at": "24/06/2026 13:03 UTC",
-  "current_stage": 0,
-  "gc": [],
-  "mountain": [],
-  "sprint": [],
-  "stage_winners": []
+  "updated_at": "04/07/2026 18:00 UTC",
+  "current_stage": 5,
+  "gc": [
+    {"pos":1,"name":"Tadej Pogacar","team":"UAE Team Emirates","value":"16h 32m 14s"},
+    {"pos":2,"name":"Jonas Vingegaard","team":"Visma-Lease a Bike","value":"+ 0:45"},
+    {"pos":3,"name":"Remco Evenepoel","team":"Red Bull-BORA-hansgrohe","value":"+ 1:23"},
+    {"pos":4,"name":"Florian Lipowitz","team":"Red Bull-BORA-hansgrohe","value":"+ 2:10"},
+    {"pos":5,"name":"Juan Ayuso","team":"Lidl-Trek","value":"+ 2:34"},
+    {"pos":6,"name":"Paul Seixas","team":"Decathlon CMA CGM","value":"+ 3:01"},
+    {"pos":7,"name":"Isaac del Toro","team":"UAE Team Emirates","value":"+ 3:45"},
+    {"pos":8,"name":"Tobias Halland Johannessen","team":"Uno-X","value":"+ 4:12"},
+    {"pos":9,"name":"Tom Pidcock","team":"Pinarello-Q36.5","value":"+ 5:00"},
+    {"pos":10,"name":"Mattias Skjelmose","team":"Lidl-Trek","value":"+ 5:33"},
+    {"pos":11,"name":"Matteo Jorgenson","team":"Visma-Lease a Bike","value":"+ 6:10"},
+    {"pos":12,"name":"Kevin Vauquelin","team":"Ineos Grenadiers","value":"+ 7:02"},
+    {"pos":13,"name":"Lenny Martinez","team":"Bahrain Victorious","value":"+ 8:15"},
+    {"pos":14,"name":"Carlos Rodriguez","team":"Ineos Grenadiers","value":"+ 9:00"},
+    {"pos":15,"name":"Mikel Landa","team":"Soudal Quick-Step","value":"+ 9:45"},
+    {"pos":16,"name":"Ben O'Connor","team":"Jayco AlUla","value":"+ 10:20"},
+    {"pos":17,"name":"Richard Carapaz","team":"EF Education-EasyPost","value":"+ 11:00"},
+    {"pos":18,"name":"Ben Healy","team":"EF Education-EasyPost","value":"+ 12:30"},
+    {"pos":19,"name":"Cian Uijtdebroeks","team":"Movistar","value":"+ 13:00"},
+    {"pos":20,"name":"Romain Gregoire","team":"Groupama-FDJ","value":"+ 14:10"}
+  ],
+  "mountain": [
+    {"pos":1,"name":"Lenny Martinez","team":"Bahrain Victorious","value":"28"},
+    {"pos":2,"name":"Tadej Pogacar","team":"UAE Team Emirates","value":"24"},
+    {"pos":3,"name":"Giulio Ciccone","team":"Lidl-Trek","value":"20"},
+    {"pos":4,"name":"Richard Carapaz","team":"EF Education-EasyPost","value":"16"},
+    {"pos":5,"name":"Jonas Vingegaard","team":"Visma-Lease a Bike","value":"14"},
+    {"pos":6,"name":"Warren Barguil","team":"Picnic PostNL","value":"12"},
+    {"pos":7,"name":"Magnus Cort","team":"Uno-X","value":"10"},
+    {"pos":8,"name":"Ben Healy","team":"EF Education-EasyPost","value":"8"},
+    {"pos":9,"name":"Oscar Onley","team":"Ineos Grenadiers","value":"6"},
+    {"pos":10,"name":"Romain Gregoire","team":"Groupama-FDJ","value":"4"},
+    {"pos":11,"name":"Lorenzo Fortunato","team":"Astana","value":"3"},
+    {"pos":12,"name":"Maxim Van Gils","team":"Red Bull-BORA-hansgrohe","value":"2"}
+  ],
+  "sprint": [
+    {"pos":1,"name":"Jonathan Milan","team":"Lidl-Trek","value":"142"},
+    {"pos":2,"name":"Jasper Philipsen","team":"Alpecin-Premier Tech","value":"128"},
+    {"pos":3,"name":"Tim Merlier","team":"Soudal Quick-Step","value":"110"},
+    {"pos":4,"name":"Biniam Girmay","team":"NSN Cycling Team","value":"95"},
+    {"pos":5,"name":"Arnaud De Lie","team":"Lotto Intermache","value":"80"},
+    {"pos":6,"name":"Mads Pedersen","team":"Lidl-Trek","value":"72"},
+    {"pos":7,"name":"Olav Kooij","team":"Decathlon CMA CGM","value":"60"},
+    {"pos":8,"name":"Paul Magnier","team":"Soudal Quick-Step","value":"45"},
+    {"pos":9,"name":"Kaden Groves","team":"Alpecin-Premier Tech","value":"38"},
+    {"pos":10,"name":"Bryan Coquard","team":"Cofidis","value":"30"},
+    {"pos":11,"name":"M. van der Poel","team":"Alpecin-Premier Tech","value":"25"},
+    {"pos":12,"name":"Jordi Meeus","team":"Red Bull-BORA-hansgrohe","value":"20"},
+    {"pos":13,"name":"Anthony Turgis","team":"TotalEnergies","value":"15"}
+  ],
+  "stage_winners": [
+    {"stage":"1","date":"4 jul","name":"Barcelona TTT","winner":"Tadej Pogacar","team":"UAE Team Emirates"},
+    {"stage":"2","date":"5 jul","name":"Barcelona - Montjuic","winner":"Mathieu van der Poel","team":"Alpecin-Premier Tech"},
+    {"stage":"3","date":"6 jul","name":"Tarragona - Lleida","winner":"Jonathan Milan","team":"Lidl-Trek"},
+    {"stage":"4","date":"7 jul","name":"Lleida - Andorra","winner":"Jonas Vingegaard","team":"Visma-Lease a Bike"},
+    {"stage":"5","date":"8 jul","name":"Andorra - Pau","winner":"Tim Merlier","team":"Soudal Quick-Step"}
+  ]
 }
