@@ -27,7 +27,7 @@ CLASSIFICATION_URLS = {
 STAGES_URL = f"{BASE}/{RACE}/stages"
 
 
-def scrape_classification(url, limit=20):
+def scrape_classification(url, limit=200):
     """Scrapes a classification page and returns top N riders."""
     try:
         r = requests.get(url, headers=HEADERS, timeout=15)
