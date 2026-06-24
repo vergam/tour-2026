@@ -96,6 +96,12 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .cp-sp{background:#E8F5E9;color:var(--vert);}
 .owner-tag{font-size:10px;font-weight:600;color:var(--vert);background:#E8F5E9;border-radius:20px;padding:2px 7px;}
 .no-owner-tag{font-size:10px;color:var(--muted);}
+.val-badge{font-size:11px;font-weight:700;background:var(--text);color:var(--jaune);border-radius:5px;padding:2px 7px;}
+.budget-bar{height:6px;background:var(--bg2);border-radius:3px;overflow:hidden;margin-top:6px;}
+.budget-fill{height:100%;border-radius:3px;transition:width .3s;}
+.budget-ok{background:var(--vert);}
+.budget-warn{background:#FF9800;}
+.budget-over{background:var(--rouge);}
 
 /* STAGES */
 .stages-list{display:flex;flex-direction:column;gap:6px;}
@@ -521,6 +527,7 @@ function showRiderModal(name){
             <span class="cat-pill ${catPillCls}">${catLabel}</span>
             <span class="stat-chip">${rd.flag} ${rd.country}</span>
             <span class="stat-chip">Edat: ${rd.age}</span>
+            <span class="val-badge">${rd.val}M</span>
           </div>`:''}
         </div>
       </div>
@@ -568,6 +575,7 @@ function renderDraft(){
       </div>
       <div class="rider-card-meta">
         <span class="cat-pill ${catPillCls[r.cat]}">${catLabel[r.cat]}</span>
+        <span class="val-badge">${r.val}M</span>
         <span style="font-size:11px;color:var(--muted);">${r.age} anys</span>
         ${owner?`<span class="owner-tag">${owner}</span>`:`<span class="no-owner-tag">Lliure</span>`}
       </div>
@@ -662,20 +670,58 @@ function renderSetupScreen(){
   if(state.unlocked){document.getElementById('setup-locked').style.display='none';document.getElementById('setup-unlocked').style.display='block';renderSetup();}
   else{document.getElementById('setup-locked').style.display='block';document.getElementById('setup-unlocked').style.display='none';document.getElementById('pw-input').value='';document.getElementById('pw-error').innerHTML='';}
 }
+function getTeamBudget(player){
+  let total=0;
+  [player.gc,player.munt,player.sprint].forEach(name=>{
+    if(!name)return;
+    const rd=getRiderDB(name);
+    if(rd)total+=rd.val;
+  });
+  return total;
+}
+
 function renderSetup(){
   document.getElementById('players-grid').innerHTML=state.players.map(p=>{
     const configured=p.name&&p.gc&&p.munt&&p.sprint;
+    const budget=getTeamBudget(p);
+    const pct=Math.min(100,Math.round(budget/15*100));
+    const budgetCls=budget>15?'budget-over':budget===15?'budget-ok':'budget-warn';
+    const budgetText=budget>15?`⚠️ ${budget}M / 15M — Passat!`:budget===15?`✓ ${budget}M / 15M`:`${budget}M / 15M`;
+    const budgetColor=budget>15?'var(--rouge)':budget===15?'var(--vert)':'#FF9800';
     return `<div class="player-card ${configured?'configured':''}">
       <div class="player-num">Jugador ${p.id}</div>
-      <input type="text" id="pname-${p.id}" value="${p.name}" placeholder="Nom del jugador">
-      <div class="rider-row"><span class="cat-label gc">GC</span><select id="pgc-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.gc===r?'selected':''}>${r}</option>`).join('')}</select></div>
-      <div class="rider-row"><span class="cat-label munt">Munt.</span><select id="pmunt-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.munt===r?'selected':''}>${r}</option>`).join('')}</select></div>
-      <div class="rider-row"><span class="cat-label sp">Sprint</span><select id="psprint-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.sprint===r?'selected':''}>${r}</option>`).join('')}</select></div>
+      <input type="text" id="pname-${p.id}" value="${p.name}" placeholder="Nom del jugador" oninput="updateBudget(${p.id})">
+      <div class="rider-row"><span class="cat-label gc">GC</span><select id="pgc-${p.id}" onchange="updateBudget(${p.id})"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>{const rd=getRiderDB(r);return`<option value="${r}" ${p.gc===r?'selected':''}>${r}${rd?` (${rd.val}M)`:''}</option>`;}).join('')}</select></div>
+      <div class="rider-row"><span class="cat-label munt">Munt.</span><select id="pmunt-${p.id}" onchange="updateBudget(${p.id})"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>{const rd=getRiderDB(r);return`<option value="${r}" ${p.munt===r?'selected':''}>${r}${rd?` (${rd.val}M)`:''}</option>`;}).join('')}</select></div>
+      <div class="rider-row"><span class="cat-label sp">Sprint</span><select id="psprint-${p.id}" onchange="updateBudget(${p.id})"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>{const rd=getRiderDB(r);return`<option value="${r}" ${p.sprint===r?'selected':''}>${r}${rd?` (${rd.val}M)`:''}</option>`;}).join('')}</select></div>
+      <div id="budget-${p.id}" style="margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:${budgetColor};font-weight:600;margin-bottom:3px;"><span>Pressupost</span><span>${budgetText}</span></div>
+        <div class="budget-bar"><div class="${budgetCls} budget-fill" style="width:${pct}%"></div></div>
+      </div>
     </div>`;
   }).join('');
 }
+function updateBudget(playerId){
+  const gc=document.getElementById(`pgc-${playerId}`)?.value||'';
+  const munt=document.getElementById(`pmunt-${playerId}`)?.value||'';
+  const sprint=document.getElementById(`psprint-${playerId}`)?.value||'';
+  const tempPlayer={gc,munt,sprint};
+  const budget=getTeamBudget(tempPlayer);
+  const pct=Math.min(100,Math.round(budget/15*100));
+  const budgetCls=budget>15?'budget-over':budget===15?'budget-ok':'budget-warn';
+  const budgetText=budget>15?`⚠️ ${budget}M / 15M — Passat!`:budget===15?`✓ ${budget}M / 15M`:`${budget}M / 15M`;
+  const budgetColor=budget>15?'var(--rouge)':budget===15?'var(--vert)':'#FF9800';
+  const el=document.getElementById(`budget-${playerId}`);
+  if(el)el.innerHTML=`<div style="display:flex;justify-content:space-between;font-size:11px;color:${budgetColor};font-weight:600;margin-bottom:3px;"><span>Pressupost</span><span>${budgetText}</span></div><div class="budget-bar"><div class="${budgetCls} budget-fill" style="width:${pct}%"></div></div>`;
+}
+
 function savePlayers(){
   state.players=state.players.map(p=>({...p,name:document.getElementById(`pname-${p.id}`)?.value||p.name,gc:document.getElementById(`pgc-${p.id}`)?.value||'',munt:document.getElementById(`pmunt-${p.id}`)?.value||'',sprint:document.getElementById(`psprint-${p.id}`)?.value||''}));
+  const over=state.players.filter(p=>p.name&&getTeamBudget(p)>15);
+  if(over.length){
+    showMsg('setup-msg',`⚠️ ${over.map(p=>p.name).join(', ')} superen els 15M!`,false);
+    return;
+  }
   saveState();renderSetup();
   showMsg('setup-msg','Jugadors desats correctament.',true);
 }
