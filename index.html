@@ -36,12 +36,14 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .tab.active-gc{background:#FFF9C4;border-color:#FFD700;color:#7A5F00;}
 .tab.active-munt{background:#FFEBEE;border-color:#FFCDD2;color:var(--rouge);}
 .tab.active-sp{background:#E8F5E9;border-color:#C8E6C9;color:var(--vert);}
+
+/* TABLES */
 .lb-table{width:100%;border-collapse:collapse;}
 .lb-table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);}
 .lb-table th.r{text-align:right;}
 .lb-table td{padding:9px 10px;font-size:13px;border-bottom:1px solid var(--bg2);}
 .lb-table tr:last-child td{border-bottom:none;}
-.lb-table tr:hover td{background:var(--bg2);}
+.lb-table tr.clickable:hover td{background:var(--bg2);cursor:pointer;}
 .pos-num{font-weight:700;color:var(--muted);font-size:14px;}
 .pos-num.p1{color:#B8860B;}
 .pos-num.p2{color:#707070;}
@@ -55,47 +57,69 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .team-name{font-size:11px;color:var(--muted);}
 .val-col{text-align:right;font-size:13px;color:var(--muted);}
 .pts-total{text-align:right;font-size:15px;font-weight:700;}
-.vic-btn{background:none;border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:12px;cursor:pointer;color:var(--muted);transition:all .15s;}
+.owner-pill{font-size:10px;font-weight:600;background:#E8F5E9;color:var(--vert);border-radius:20px;padding:1px 7px;margin-left:6px;white-space:nowrap;}
+
+/* FANTASY */
+.vic-btn{background:none;border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:12px;cursor:pointer;color:var(--muted);}
 .vic-btn:hover{background:var(--bg2);}
 .vic-count{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#FFF9C4;color:#7A5F00;font-size:11px;font-weight:700;}
-.fantasy-row td{cursor:pointer;}
 .rider-mini-badges{display:flex;gap:5px;margin-top:3px;flex-wrap:wrap;}
 .cat-badge{font-size:10px;font-weight:600;padding:1px 7px;border-radius:20px;display:inline-flex;align-items:center;gap:3px;}
 .b-gc{background:#FFF9C4;color:#7A5F00;}
 .b-munt{background:#FFEBEE;color:var(--rouge);}
 .b-sp{background:#E8F5E9;color:var(--vert);}
+.progress-bar{height:4px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--jaune);transition:width .3s;}
+
+/* DRAFT */
+.draft-filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.draft-filter{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s;}
+.draft-filter:hover{color:var(--text);}
+.draft-filter.active{background:var(--text);color:white;border-color:var(--text);}
+.draft-filter.f-gc.active{background:#7A5F00;border-color:#7A5F00;color:white;}
+.draft-filter.f-munt.active{background:var(--rouge);border-color:var(--rouge);color:white;}
+.draft-filter.f-sp.active{background:var(--vert);border-color:var(--vert);color:white;}
+.draft-search{border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;outline:none;background:var(--white);color:var(--text);width:180px;}
+.draft-search:focus{border-color:#999;}
+.riders-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.rider-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:all .15s;position:relative;}
+.rider-card:hover{border-color:#999;transform:translateY(-1px);}
+.rider-card.owned{border-color:#C8E6C9;background:#F9FFF9;}
+.rider-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;margin-bottom:8px;background:var(--bg2);}
+.rider-avatar-fallback{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;margin-bottom:8px;}
+.rider-card-name{font-size:13px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+.rider-card-team{font-size:11px;color:var(--muted);margin-bottom:6px;}
+.rider-card-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.cat-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;}
+.cp-gc{background:#FFF9C4;color:#7A5F00;}
+.cp-munt{background:#FFEBEE;color:var(--rouge);}
+.cp-sp{background:#E8F5E9;color:var(--vert);}
+.owner-tag{font-size:10px;font-weight:600;color:var(--vert);background:#E8F5E9;border-radius:20px;padding:2px 7px;}
+.no-owner-tag{font-size:10px;color:var(--muted);}
 
 /* STAGES */
 .stages-list{display:flex;flex-direction:column;gap:6px;}
-.stage-row{display:grid;grid-template-columns:36px 70px 1fr 80px 90px 90px;gap:8px;align-items:center;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);transition:all .15s;}
+.stage-row{display:grid;grid-template-columns:36px 70px 1fr 90px 80px 90px;gap:8px;align-items:center;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);transition:all .15s;}
 .stage-row.done{background:var(--bg2);border-color:transparent;cursor:pointer;}
 .stage-row.done:hover{border-color:var(--border);background:var(--white);}
 .stage-row.next{border-color:var(--jaune);background:#FFFEF5;}
-.stage-row.upcoming{opacity:.65;}
+.stage-row.upcoming{opacity:.6;}
 .stage-num-badge{background:var(--text);color:white;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;text-align:center;}
 .stage-num-badge.done-badge{background:#888;}
 .stage-date{font-size:11px;color:var(--muted);}
-.stage-name{font-size:13px;font-weight:500;}
+.stage-name-cell{min-width:0;}
+.stage-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .stage-winner-mini{font-size:11px;color:var(--muted);margin-top:2px;}
 .stage-winner-mini.in-pool{color:var(--vert);font-weight:600;}
-.type-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;text-align:center;white-space:nowrap;}
+.type-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap;}
 .type-pla{background:#E3F2FD;color:#1565C0;}
 .type-munt{background:#FFEBEE;color:var(--rouge);}
 .type-cri{background:#F3E5F5;color:#6A1B9A;}
 .type-ondulat{background:#E8F5E9;color:var(--vert);}
 .stage-stat{font-size:12px;color:var(--muted);text-align:right;}
 .stage-stat strong{color:var(--text);font-size:13px;}
-.stages-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
-.stages-legend span{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px;}
 
-.sw-table{width:100%;border-collapse:collapse;}
-.sw-table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);}
-.sw-table td{padding:8px 10px;font-size:13px;border-bottom:1px solid var(--bg2);}
-.sw-table tr:last-child td{border-bottom:none;}
-.sw-table tr:hover td{background:var(--bg2);}
-.stage-num{background:var(--text);color:white;border-radius:4px;padding:2px 7px;font-size:11px;font-weight:700;}
-.in-pool-star{color:var(--jaune);font-size:14px;margin-left:4px;}
-
+/* SETUP */
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
 .player-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
 .player-card.configured{border-color:#C8E6C9;background:#F9FFF9;}
@@ -108,7 +132,6 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .cat-label.munt{background:#FFEBEE;color:var(--rouge);}
 .cat-label.sp{background:#E8F5E9;color:var(--vert);}
 .rider-row select{flex:1;border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:12px;background:var(--bg);color:var(--text);outline:none;}
-.rider-row select:focus{border-color:#999;background:white;}
 .btn{border:1px solid var(--border);border-radius:7px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;}
 .btn-primary{background:var(--text);color:white;border-color:var(--text);}
 .btn-primary:hover{background:#333;}
@@ -120,40 +143,49 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .alert-info{background:#EFF6FF;color:#1E40AF;border:1px solid #BFDBFE;}
 .alert-success{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;}
 .alert-error{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA;}
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px;}
-.modal-box{background:var(--white);border-radius:14px;padding:24px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;}
-.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.modal-header h2{font-size:17px;font-weight:700;}
-.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:999;padding:16px;}
+.modal-box{background:var(--white);border-radius:14px;padding:24px;max-width:500px;width:100%;max-height:88vh;overflow-y:auto;}
+.modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:12px;}
+.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);flex-shrink:0;}
 .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
 .detail-card{border-radius:8px;padding:14px;text-align:center;}
 .dc-gc{background:#FFF9C4;border:1px solid #FFD700;}
 .dc-munt{background:#FFEBEE;border:1px solid #FFCDD2;}
 .dc-sp{background:#E8F5E9;border:1px solid #C8E6C9;}
 .dc-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;}
-.dc-name{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.3;}
+.dc-name{font-size:12px;font-weight:700;margin-bottom:4px;line-height:1.3;}
 .dc-pts{font-size:22px;font-weight:800;}
 .dc-pos{font-size:11px;color:var(--muted);}
 .total-row{background:var(--bg2);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:700;margin-top:12px;}
-.top3-list{list-style:none;margin-top:10px;}
+.rider-modal-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--border);flex-shrink:0;}
+.rider-modal-photo-fallback{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid var(--border);flex-shrink:0;}
+.wins-list{list-style:none;margin-top:4px;}
+.wins-list li{font-size:12px;padding:4px 0;border-bottom:1px solid var(--bg2);color:var(--muted);}
+.wins-list li:last-child{border-bottom:none;}
+.wins-list li::before{content:"🏆 ";font-size:11px;}
+.top3-list{list-style:none;}
 .top3-list li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--bg2);font-size:13px;}
 .top3-list li:last-child{border-bottom:none;}
-.medal{font-size:16px;width:24px;}
+.sw-table{width:100%;border-collapse:collapse;}
+.sw-table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);}
+.sw-table td{padding:8px 10px;font-size:13px;border-bottom:1px solid var(--bg2);}
+.sw-table tr:last-child td{border-bottom:none;}
+.sw-table tr:hover td{background:var(--bg2);}
+.stage-num{background:var(--text);color:white;border-radius:4px;padding:2px 7px;font-size:11px;font-weight:700;}
+.in-pool-star{color:var(--jaune);font-size:14px;margin-left:4px;}
 .no-data{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
 .loading{text-align:center;padding:30px;color:var(--muted);font-size:13px;}
 .pin-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:16px;letter-spacing:.2em;text-align:center;outline:none;margin:12px 0;}
 .pin-input:focus{border-color:#999;}
-.progress-bar{height:4px;background:var(--bg2);border-radius:2px;margin-bottom:20px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--jaune);border-radius:2px;transition:width .3s;}
+.stat-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg2);border-radius:6px;padding:4px 10px;font-size:12px;}
 </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <div>
-      <div class="eyebrow">Fantasy</div>
-      <h1>Tour de França 2026</h1>
-    </div>
+    <div><div class="eyebrow">Fantasy</div><h1>Tour de França 2026</h1></div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
       <div class="jerseys">
         <div class="jersey j-gc">G</div>
@@ -171,6 +203,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showScreen('rankings',event)">Classificacions</button>
     <button class="nav-btn" onclick="showScreen('fantasy',event)">Fantasy</button>
+    <button class="nav-btn" onclick="showScreen('draft',event)">Draft</button>
     <button class="nav-btn" onclick="showScreen('recorregut',event)">Recorregut</button>
     <button class="nav-btn" onclick="showScreen('etapes',event)">Guanyadors</button>
     <button class="nav-btn" onclick="showScreen('setup',event)">Jugadors</button>
@@ -178,7 +211,6 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 </nav>
 <main>
 
-<!-- CLASSIFICACIONS -->
 <div id="screen-rankings" class="screen active">
   <div class="tab-row">
     <button class="tab active-gc" onclick="showRankTab('gc',this)">Mallot Groc — General</button>
@@ -188,7 +220,6 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   <div class="card"><div id="rank-content"><div class="loading">Carregant...</div></div></div>
 </div>
 
-<!-- FANTASY -->
 <div id="screen-fantasy" class="screen">
   <div class="card">
     <div class="card-title">Classificació Fantasy</div>
@@ -196,21 +227,33 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   </div>
 </div>
 
-<!-- RECORREGUT -->
+<div id="screen-draft" class="screen">
+  <div class="card">
+    <div class="card-title">Tots els corredors del draft</div>
+    <div class="draft-filters">
+      <button class="draft-filter active" onclick="setDraftFilter('all',this)">Tots</button>
+      <button class="draft-filter f-gc" onclick="setDraftFilter('gc',this)">General</button>
+      <button class="draft-filter f-munt" onclick="setDraftFilter('munt',this)">Muntanya</button>
+      <button class="draft-filter f-sp" onclick="setDraftFilter('sprint',this)">Sprint</button>
+      <input class="draft-search" id="draft-search" placeholder="Buscar corredor..." oninput="renderDraft()">
+    </div>
+    <div id="draft-content"><div class="loading">Carregant...</div></div>
+  </div>
+</div>
+
 <div id="screen-recorregut" class="screen">
   <div class="card">
     <div class="card-title">Recorregut — 21 etapes</div>
-    <div class="stages-legend">
-      <span><span class="type-pill type-pla" style="padding:2px 6px;">Pla</span> Esprint</span>
-      <span><span class="type-pill type-munt" style="padding:2px 6px;">Munt.</span> Muntanya</span>
-      <span><span class="type-pill type-ondulat" style="padding:2px 6px;">Ondulat</span> Punxeur</span>
-      <span><span class="type-pill type-cri" style="padding:2px 6px;">CRI</span> Contrarrellotge</span>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+      <span class="type-pill type-pla">Pla</span>
+      <span class="type-pill type-munt">Muntanya</span>
+      <span class="type-pill type-ondulat">Ondulat</span>
+      <span class="type-pill type-cri">Contrarrellotge</span>
     </div>
     <div id="recorregut-content"><div class="loading">Carregant...</div></div>
   </div>
 </div>
 
-<!-- GUANYADORS -->
 <div id="screen-etapes" class="screen">
   <div class="card">
     <div class="card-title">Guanyadors d'etapa</div>
@@ -218,7 +261,6 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   </div>
 </div>
 
-<!-- SETUP -->
 <div id="screen-setup" class="screen">
   <div id="setup-locked">
     <div class="card" style="max-width:360px;margin:40px auto;">
@@ -231,36 +273,39 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   </div>
   <div id="setup-unlocked" style="display:none;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
-      <div class="alert alert-info" style="margin:0;flex:1;">Tria 3 corredors per jugador i assigna la seva categoria.</div>
+      <div class="alert alert-info" style="margin:0;flex:1;">Tria 3 corredors per jugador i assigna'ls categoria GC, Muntanya o Sprint.</div>
       <button class="btn btn-ghost btn-sm" onclick="lockSetup()">Bloquejar</button>
     </div>
     <div class="players-grid" id="players-grid"></div>
-    <div class="flex-end">
-      <button class="btn btn-primary" onclick="savePlayers()">Desar jugadors</button>
-    </div>
+    <div class="flex-end"><button class="btn btn-primary" onclick="savePlayers()">Desar jugadors</button></div>
     <div id="setup-msg" style="margin-top:8px;"></div>
   </div>
 </div>
 
 </main>
 <script>
-const RIDERS={gc:["Tadej Pogacar","Jonas Vingegaard","Remco Evenepoel","Florian Lipowitz","Paul Seixas","Juan Ayuso","Isaac del Toro","T.H. Johannessen","Tom Pidcock","Mattias Skjelmose","Matteo Jorgenson","Kevin Vauquelin","Cian Uijtdebroeks","Carlos Rodriguez","Mikel Landa"],munt:["Lenny Martinez","Giulio Ciccone","Richard Carapaz","Lorenzo Fortunato","Warren Barguil","Magnus Cort","Romain Gregoire","Oscar Onley","Ben Healy","Ben O'Connor","V. Paret-Peintre","Maxim Van Gils"],sprint:["Jonathan Milan","Jasper Philipsen","Tim Merlier","Biniam Girmay","Arnaud De Lie","Mads Pedersen","Olav Kooij","Paul Magnier","Kaden Groves","Bryan Coquard","M. van der Poel","Jordi Meeus","Anthony Turgis"]};
-const ALL_RIDERS=[...RIDERS.gc,...RIDERS.munt,...RIDERS.sprint];
+const RIDERS_POOL={gc:["Tadej Pogacar","Jonas Vingegaard","Remco Evenepoel","Florian Lipowitz","Paul Seixas","Juan Ayuso","Isaac del Toro","T.H. Johannessen","Tom Pidcock","Mattias Skjelmose","Matteo Jorgenson","Kevin Vauquelin","Cian Uijtdebroeks","Carlos Rodriguez","Mikel Landa"],munt:["Lenny Martinez","Giulio Ciccone","Richard Carapaz","Lorenzo Fortunato","Warren Barguil","Magnus Cort","Romain Gregoire","Oscar Onley","Ben Healy","Ben O'Connor","V. Paret-Peintre","Maxim Van Gils"],sprint:["Jonathan Milan","Jasper Philipsen","Tim Merlier","Biniam Girmay","Arnaud De Lie","Mads Pedersen","Olav Kooij","Paul Magnier","Kaden Groves","Bryan Coquard","M. van der Poel","Jordi Meeus","Anthony Turgis"]};
+const ALL_RIDERS=[...RIDERS_POOL.gc,...RIDERS_POOL.munt,...RIDERS_POOL.sprint];
 const PTS={gc:[25,22,19,16,13,10,7,5,3,1],munt:[18,15,12,10,8,6,4,3,2,1],sprint:[15,12,10,8,6,4,3,2,1,1]};
 const PASSWORD="RutEduBri";
 const TYPE_LABELS={pla:"Pla",munt:"Muntanya",cri:"Contrarrellotge",ondulat:"Ondulat"};
 const TYPE_CLS={pla:"type-pla",munt:"type-munt",cri:"type-cri",ondulat:"type-ondulat"};
-let liveData=null,currentRankTab='gc';
+const CAT_COLORS={gc:["#FFF9C4","#7A5F00"],munt:["#FFEBEE","var(--rouge)"],sprint:["#E8F5E9","var(--vert)"]};
+let liveData=null,ridersDB=[],currentRankTab='gc',draftFilter='all';
 
-function loadState(){try{const s=localStorage.getItem('ftt26v4');if(s)return JSON.parse(s);}catch(e){}return{players:Array.from({length:12},(_,i)=>({id:i+1,name:`Jugador ${i+1}`,gc:'',munt:'',sprint:''})),unlocked:false};}
-function saveState(){try{localStorage.setItem('ftt26v4',JSON.stringify(state));}catch(e){}}
+function loadState(){try{const s=localStorage.getItem('ftt26v5');if(s)return JSON.parse(s);}catch(e){}return{players:Array.from({length:12},(_,i)=>({id:i+1,name:`Jugador ${i+1}`,gc:'',munt:'',sprint:''})),unlocked:false};}
+function saveState(){try{localStorage.setItem('ftt26v5',JSON.stringify(state));}catch(e){}}
 let state=loadState();
 
 async function loadData(){
   try{const r=await fetch('data/classifications.json?t='+Date.now());liveData=await r.json();}
   catch(e){liveData={updated_at:'Sense dades',current_stage:0,gc:[],mountain:[],sprint:[],stage_winners:[],stages:[]};}
-  document.getElementById('update-dot').className='update-dot'+(liveData.current_stage>0?'':' old');
-  document.getElementById('update-text').textContent=liveData.current_stage>0?`Etapa ${liveData.current_stage} · ${liveData.updated_at}`:liveData.updated_at;
+  try{const r=await fetch('data/riders.json?t='+Date.now());const d=await r.json();ridersDB=d.riders||[];}
+  catch(e){ridersDB=[];}
+  const dot=document.getElementById('update-dot');
+  const txt=document.getElementById('update-text');
+  dot.className='update-dot'+(liveData.current_stage>0?'':' old');
+  txt.textContent=liveData.current_stage>0?`Etapa ${liveData.current_stage} · ${liveData.updated_at}`:liveData.updated_at;
   refreshCurrentScreen();
 }
 
@@ -275,6 +320,7 @@ function refreshCurrentScreen(){const a=document.querySelector('.screen.active')
 function refreshScreen(id){
   if(id==='rankings')renderRankings(currentRankTab);
   if(id==='fantasy')renderFantasy();
+  if(id==='draft')renderDraft();
   if(id==='recorregut')renderRecorregut();
   if(id==='etapes')renderEtapes();
   if(id==='setup')renderSetupScreen();
@@ -293,7 +339,28 @@ function matchRider(name,arr){
   }
   return -1;
 }
-function isInPool(name){if(!name)return false;return matchRider(name,ALL_RIDERS.map(r=>({name:r})))>=0;}
+function isInPool(name){return matchRider(name,ALL_RIDERS.map(r=>({name:r})))>=0;}
+
+function getRiderDB(name){
+  if(!name||!ridersDB.length)return null;
+  const n=name.toLowerCase().trim();
+  for(const r of ridersDB){
+    const rn=r.name.toLowerCase().trim();
+    if(n===rn||rn.includes(n)||n.includes(rn))return r;
+    const parts=rn.split(' ');const nlast=n.split(' ').pop();
+    if(parts[parts.length-1]===nlast&&nlast.length>3)return r;
+  }
+  return null;
+}
+
+function getOwner(riderName){
+  for(const p of state.players){
+    if(!p.name)continue;
+    const fields=[p.gc,p.munt,p.sprint];
+    for(const f of fields){if(f&&matchRider(riderName,[{name:f}])>=0)return p.name;}
+  }
+  return null;
+}
 
 /* RANKINGS */
 function showRankTab(cat,btn){
@@ -302,6 +369,7 @@ function showRankTab(cat,btn){
   btn.className='tab active-'+(cat==='munt'?'munt':cat==='sp'?'sp':'gc');
   renderRankings(cat);
 }
+
 function renderRankings(cat){
   const el=document.getElementById('rank-content');
   if(!liveData){el.innerHTML='<div class="loading">Carregant...</div>';return;}
@@ -311,8 +379,7 @@ function renderRankings(cat){
   if(!data||!data.length){el.innerHTML='<div class="no-data">Sense dades. El Tour comença el 4 de juliol.</div>';return;}
   const inPoolCount=data.filter(r=>isInPool(r.name)).length;
   let html=`<div style="font-size:12px;color:var(--muted);margin-bottom:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
-    <span><span class="pool-dot ${dotCls}"></span>En negreta = al pool de fantasy</span>
-    <span style="color:var(--muted);">Gris = fora del pool</span>
+    <span><span class="pool-dot ${dotCls}"></span>En negreta = al pool · Gris = fora del pool</span>
     <span style="margin-left:auto;">${inPoolCount}/${data.length} del pool visibles</span>
   </div>
   <table class="lb-table"><thead><tr><th style="width:36px;">#</th><th>Corredor</th><th class="r">${valLabel}</th></tr></thead><tbody>`;
@@ -322,7 +389,13 @@ function renderRankings(cat){
     const dot=inPool?`<span class="pool-dot ${dotCls}"></span>`:'';
     const pos=r.pos||(i+1);
     const posCls=pos===1?'p1':pos===2?'p2':pos===3?'p3':'';
-    html+=`<tr><td><span class="pos-num ${posCls}">${pos}</span></td><td><div class="${cls}">${dot}${r.name}</div><div class="team-name">${r.team||''}</div></td><td class="val-col">${r.value||''}</td></tr>`;
+    const owner=getOwner(r.name);
+    const ownerHtml=owner?`<span class="owner-pill">${owner}</span>`:'';
+    html+=`<tr class="clickable" onclick="showRiderModal('${r.name.replace(/'/g,"\\'")}')">
+      <td><span class="pos-num ${posCls}">${pos}</span></td>
+      <td><div class="${cls}">${dot}${r.name}${ownerHtml}</div><div class="team-name">${r.team||''}</div></td>
+      <td class="val-col">${r.value||''}</td>
+    </tr>`;
   });
   html+='</tbody></table>';
   el.innerHTML=html;
@@ -330,7 +403,7 @@ function renderRankings(cat){
 
 /* FANTASY */
 function getScore(player){
-  if(!liveData)return{gcPts:0,muntPts:0,spPts:0,bonusPts:0,total:0,gcPos:'—',muntPos:'—',spPos:'—'};
+  if(!liveData)return{gcPts:0,muntPts:0,spPts:0,bonusPts:0,total:0,gcPos:'—',muntPos:'—',spPos:'—',gcRealPos:null,muntRealPos:null,spRealPos:null};
   const gcIdx=matchRider(player.gc,liveData.gc);
   const muntIdx=matchRider(player.munt,liveData.mountain);
   const spIdx=matchRider(player.sprint,liveData.sprint);
@@ -339,12 +412,11 @@ function getScore(player){
   const spPts=spIdx>=0&&spIdx<10?PTS.sprint[spIdx]:0;
   let bonusPts=0;
   const myRiders=[player.gc,player.munt,player.sprint].filter(Boolean);
-  (liveData.stage_winners||[]).forEach(sw=>{
-    if(!sw.winner)return;
-    myRiders.forEach(r=>{if(matchRider(r,[{name:sw.winner}])>=0)bonusPts+=5;});
-  });
+  (liveData.stage_winners||[]).forEach(sw=>{if(!sw.winner)return;myRiders.forEach(r=>{if(matchRider(r,[{name:sw.winner}])>=0)bonusPts+=5;});});
+  const fmtPos=(idx,arr)=>idx<0?'—':`${idx+1}r`;
   return{gcPts,muntPts,spPts,bonusPts,total:gcPts+muntPts+spPts+bonusPts,
-    gcPos:gcIdx>=0?`${gcIdx+1}r`:'11è+',muntPos:muntIdx>=0?`${muntIdx+1}r`:'11è+',spPos:spIdx>=0?`${spIdx+1}r`:'11è+'};
+    gcPos:fmtPos(gcIdx,liveData.gc),muntPos:fmtPos(muntIdx,liveData.mountain),spPos:fmtPos(spIdx,liveData.sprint),
+    gcRealPos:gcIdx>=0?gcIdx+1:null,muntRealPos:muntIdx>=0?muntIdx+1:null,spRealPos:spIdx>=0?spIdx+1:null};
 }
 
 function renderFantasy(){
@@ -352,11 +424,10 @@ function renderFantasy(){
   const active=state.players.filter(p=>p.name&&(p.gc||p.munt||p.sprint));
   if(!active.length){el.innerHTML='<div class="no-data">Configura els jugadors a "Jugadors".</div>';return;}
   const scored=active.map(p=>({...p,...getScore(p)})).sort((a,b)=>b.total-a.total);
-  const currentStage=liveData?.current_stage||0;
-  const totalStages=21;
-  const pct=Math.round(currentStage/totalStages*100);
+  const cur=liveData?.current_stage||0;
+  const pct=Math.round(cur/21*100);
   let html=`<div style="margin-bottom:16px;">
-    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;"><span>Progrés del Tour</span><span>Etapa ${currentStage}/${totalStages}</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;"><span>Progrés del Tour</span><span>Etapa ${cur}/21</span></div>
     <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
   </div>
   <table class="lb-table"><thead><tr><th style="width:36px;">#</th><th>Jugador / Corredors</th><th class="r">GC</th><th class="r">Munt</th><th class="r">Sprint</th><th class="r">Vict.</th><th class="r">Total</th></tr></thead><tbody>`;
@@ -366,13 +437,16 @@ function renderFantasy(){
     let vicCount=0;
     const myRiders=[p.gc,p.munt,p.sprint].filter(Boolean);
     (liveData?.stage_winners||[]).forEach(sw=>{if(!sw.winner)return;myRiders.forEach(r=>{if(matchRider(r,[{name:sw.winner}])>=0)vicCount++;});});
-    html+=`<tr class="fantasy-row" onclick="showPlayerDetail(${p.id})">
+    const gcPosText=p.gcRealPos?`${p.gcRealPos}r`:'—';
+    const muntPosText=p.muntRealPos?`${p.muntRealPos}r`:'—';
+    const spPosText=p.spRealPos?`${p.spRealPos}r`:'—';
+    html+=`<tr class="clickable" onclick="showPlayerDetail(${p.id})">
       <td><span class="pos-num ${posCls}">${medal||(i+1)}</span></td>
       <td><div style="font-weight:600;font-size:14px;">${p.name}</div>
         <div class="rider-mini-badges">
-          <span class="cat-badge b-gc">${p.gc||'—'} <span style="opacity:.6">${p.gcPos}</span></span>
-          <span class="cat-badge b-munt">${p.munt||'—'} <span style="opacity:.6">${p.muntPos}</span></span>
-          <span class="cat-badge b-sp">${p.sprint||'—'} <span style="opacity:.6">${p.spPos}</span></span>
+          <span class="cat-badge b-gc">${p.gc||'—'} <span style="opacity:.6">${gcPosText}</span></span>
+          <span class="cat-badge b-munt">${p.munt||'—'} <span style="opacity:.6">${muntPosText}</span></span>
+          <span class="cat-badge b-sp">${p.sprint||'—'} <span style="opacity:.6">${spPosText}</span></span>
         </div></td>
       <td class="pts-total" style="color:#7A5F00;">${p.gcPts}</td>
       <td class="pts-total" style="color:var(--rouge);">${p.muntPts}</td>
@@ -388,11 +462,14 @@ function renderFantasy(){
 function showPlayerDetail(playerId){
   const p=state.players.find(x=>x.id===playerId);if(!p)return;
   const s=getScore(p);
+  const gcPosText=s.gcRealPos?`${s.gcRealPos}r del GC`:'Fora del top';
+  const muntPosText=s.muntRealPos?`${s.muntRealPos}r de Muntanya`:'Fora del top';
+  const spPosText=s.spRealPos?`${s.spRealPos}r de Sprint`:'Fora del top';
   openModal(`<div class="modal-header"><h2>${p.name}</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="detail-grid">
-      <div class="detail-card dc-gc"><div class="dc-cat" style="color:#7A5F00;">General</div><div class="dc-name">${p.gc||'—'}</div><div class="dc-pts" style="color:#7A5F00;">${s.gcPts}</div><div class="dc-pos">pos. ${s.gcPos}</div></div>
-      <div class="detail-card dc-munt"><div class="dc-cat" style="color:var(--rouge);">Muntanya</div><div class="dc-name">${p.munt||'—'}</div><div class="dc-pts" style="color:var(--rouge);">${s.muntPts}</div><div class="dc-pos">pos. ${s.muntPos}</div></div>
-      <div class="detail-card dc-sp"><div class="dc-cat" style="color:var(--vert);">Sprint</div><div class="dc-name">${p.sprint||'—'}</div><div class="dc-pts" style="color:var(--vert);">${s.spPts}</div><div class="dc-pos">pos. ${s.spPos}</div></div>
+      <div class="detail-card dc-gc"><div class="dc-cat" style="color:#7A5F00;">General</div><div class="dc-name">${p.gc||'—'}</div><div class="dc-pts" style="color:#7A5F00;">${s.gcPts}</div><div class="dc-pos">${gcPosText}</div></div>
+      <div class="detail-card dc-munt"><div class="dc-cat" style="color:var(--rouge);">Muntanya</div><div class="dc-name">${p.munt||'—'}</div><div class="dc-pts" style="color:var(--rouge);">${s.muntPts}</div><div class="dc-pos">${muntPosText}</div></div>
+      <div class="detail-card dc-sp"><div class="dc-cat" style="color:var(--vert);">Sprint</div><div class="dc-name">${p.sprint||'—'}</div><div class="dc-pts" style="color:var(--vert);">${s.spPts}</div><div class="dc-pos">${spPosText}</div></div>
     </div>
     ${s.bonusPts>0?`<div style="background:#F0FDF4;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:13px;color:var(--vert);font-weight:600;">+${s.bonusPts} pts de victòries d'etapa</div>`:''}
     <div class="total-row"><span>Total</span><span style="font-size:20px;">${s.total} pts</span></div>`);
@@ -408,44 +485,128 @@ function showVictories(playerId){
     ${wins.length?`<table class="sw-table"><thead><tr><th>#</th><th>Data</th><th>Corredor</th><th>Etapa</th><th class="r">Pts</th></tr></thead><tbody>${rows}</tbody></table><div class="total-row" style="margin-top:12px;"><span>Total</span><span>+${wins.length*5} pts</span></div>`:'<div class="no-data">Cap victòria encara.</div>'}`);
 }
 
+/* RIDER MODAL */
+function showRiderModal(name){
+  const rd=getRiderDB(name);
+  const owner=getOwner(name);
+  const catLabel=rd?{gc:'General',munt:'Muntanya',sprint:'Sprint'}[rd.cat]||rd.cat:'';
+  const catPillCls=rd?{gc:'cp-gc',munt:'cp-munt',sprint:'cp-sp'}[rd.cat]||'cp-gc':'cp-gc';
+
+  const photoUrl=rd?`https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/${rd.wiki}.jpg/200px-${rd.wiki}.jpg`:'';
+  const initials=name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+  const avatarBg=rd?{gc:'#FFF9C4',munt:'#FFEBEE',sprint:'#E8F5E9'}[rd.cat]||'#F2F1ED':'#F2F1ED';
+  const avatarColor=rd?{gc:'#7A5F00',munt:'#C62828',sprint:'#2E7D32'}[rd.cat]||'#444':'#444';
+
+  const photoHtml=rd?`
+    <img id="rider-photo" src="${photoUrl}" class="rider-modal-photo" onerror="this.style.display='none';document.getElementById('rider-avatar-fb').style.display='flex';" alt="${name}">
+    <div id="rider-avatar-fb" class="rider-modal-photo-fallback" style="background:${avatarBg};display:none;">${initials}</div>
+  `:`<div class="rider-modal-photo-fallback" style="background:${avatarBg};color:${avatarColor};">${initials}</div>`;
+
+  const winsHtml=rd&&rd.wins&&rd.wins.length?`
+    <div style="margin-top:14px;">
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;">Palmarès destacat</div>
+      <ul class="wins-list">${rd.wins.map(w=>`<li>${w}</li>`).join('')}</ul>
+    </div>`:'';
+
+  const ownerHtml=owner?`<div style="margin-top:12px;background:#F0FDF4;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--vert);font-weight:600;">Propietari: ${owner}</div>`:`<div style="margin-top:12px;background:var(--bg2);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--muted);">Sense propietari assignat</div>`;
+
+  openModal(`
+    <div class="modal-header">
+      <div style="display:flex;gap:14px;align-items:center;">
+        ${photoHtml}
+        <div>
+          <div style="font-size:18px;font-weight:700;line-height:1.2;">${name}</div>
+          ${rd?`<div style="font-size:13px;color:var(--muted);margin-top:3px;">${rd.team||''}</div>
+          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;">
+            <span class="cat-pill ${catPillCls}">${catLabel}</span>
+            <span class="stat-chip">${rd.flag} ${rd.country}</span>
+            <span class="stat-chip">Edat: ${rd.age}</span>
+          </div>`:''}
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    ${winsHtml}
+    ${ownerHtml}
+  `);
+}
+
+/* DRAFT */
+function setDraftFilter(f,btn){
+  draftFilter=f;
+  document.querySelectorAll('.draft-filter').forEach(b=>{b.className=b.className.replace(' active','');});
+  btn.className+=' active';
+  renderDraft();
+}
+
+function renderDraft(){
+  const el=document.getElementById('draft-content');
+  if(!ridersDB.length){el.innerHTML='<div class="no-data">Carregant informació dels corredors...</div>';return;}
+  const search=(document.getElementById('draft-search')?.value||'').toLowerCase().trim();
+  let list=ridersDB.filter(r=>{
+    if(draftFilter!=='all'&&r.cat!==draftFilter)return false;
+    if(search&&!r.name.toLowerCase().includes(search)&&!r.country.toLowerCase().includes(search)&&!r.team.toLowerCase().includes(search))return false;
+    return true;
+  });
+  if(!list.length){el.innerHTML='<div class="no-data">Cap corredor trobat.</div>';return;}
+  const catLabel={gc:'General',munt:'Muntanya',sprint:'Sprint'};
+  const catPillCls={gc:'cp-gc',munt:'cp-munt',sprint:'cp-sp'};
+  const avatarBg={gc:'#FFF9C4',munt:'#FFEBEE',sprint:'#E8F5E9'};
+  let html='<div class="riders-grid">';
+  list.forEach(r=>{
+    const owner=getOwner(r.name);
+    const initials=r.name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    const photoUrl=`https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/${r.wiki}.jpg/200px-${r.wiki}.jpg`;
+    html+=`<div class="rider-card ${owner?'owned':''}" onclick="showRiderModal('${r.name.replace(/'/g,"\\'")}')">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <img src="${photoUrl}" class="rider-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="${r.name}">
+        <div class="rider-avatar-fallback" style="background:${avatarBg[r.cat]};display:none;">${initials}</div>
+        <div style="min-width:0;">
+          <div class="rider-card-name">${r.flag} ${r.name}</div>
+          <div class="rider-card-team">${r.team}</div>
+        </div>
+      </div>
+      <div class="rider-card-meta">
+        <span class="cat-pill ${catPillCls[r.cat]}">${catLabel[r.cat]}</span>
+        <span style="font-size:11px;color:var(--muted);">${r.age} anys</span>
+        ${owner?`<span class="owner-tag">${owner}</span>`:`<span class="no-owner-tag">Lliure</span>`}
+      </div>
+    </div>`;
+  });
+  html+='</div>';
+  html+=`<div style="font-size:12px;color:var(--muted);margin-top:14px;">${list.length} corredors · Clica per veure el perfil complet</div>`;
+  el.innerHTML=html;
+}
+
 /* RECORREGUT */
 function renderRecorregut(){
   const el=document.getElementById('recorregut-content');
   if(!liveData){el.innerHTML='<div class="loading">Carregant...</div>';return;}
   const stages=liveData.stages||[];
   if(!stages.length){el.innerHTML='<div class="no-data">Sense dades d\'etapes.</div>';return;}
-
-  const doneStages=stages.filter(s=>s.status==='done').length;
   const nextStage=stages.find(s=>s.status==='upcoming');
-
   let html='<div class="stages-list">';
   stages.forEach(s=>{
     const isDone=s.status==='done';
     const isNext=nextStage&&s.num===nextStage.num;
     const sw=isDone?(liveData.stage_winners||[]).find(w=>String(w.stage)===String(s.num)):null;
-    const winnerInPool=sw&&isInPool(sw.winner);
+    const winnerInPool=sw&&isInPool(sw.winner||'');
     const rowCls=isDone?'done':isNext?'next':'upcoming';
     const numCls=isDone?'stage-num-badge done-badge':'stage-num-badge';
     const nextLabel=isNext?'<span style="font-size:10px;background:var(--jaune);color:#7A5F00;border-radius:3px;padding:1px 5px;font-weight:700;margin-left:6px;">PRÒXIMA</span>':'';
-
     html+=`<div class="stage-row ${rowCls}" ${isDone?`onclick="showStageDetail(${s.num})"`:''}> 
       <div><span class="${numCls}">${s.num}</span></div>
       <div class="stage-date">${s.date}</div>
-      <div>
+      <div class="stage-name-cell">
         <div class="stage-name">${s.name}${nextLabel}</div>
-        ${isDone&&sw?`<div class="stage-winner-mini ${winnerInPool?'in-pool':''}">${winnerInPool?'★ ':''} ${sw.winner}</div>`:''}
+        ${isDone&&sw?`<div class="stage-winner-mini ${winnerInPool?'in-pool':''}">${winnerInPool?'★ ':''}${sw.winner}</div>`:''}
       </div>
       <div><span class="type-pill ${TYPE_CLS[s.type]||'type-pla'}">${TYPE_LABELS[s.type]||s.type}</span></div>
       <div class="stage-stat"><strong>${s.km}</strong> km</div>
       <div class="stage-stat"><strong>${s.desnivell.toLocaleString()}</strong> m ↑</div>
     </div>`;
   });
-  html+='</div>';
-  html+=`<div style="font-size:12px;color:var(--muted);margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;">
-    <span>${doneStages} etapes completades</span>
-    <span>${stages.length-doneStages} per disputar</span>
-    <span>★ = guanyador al pool de fantasy</span>
-  </div>`;
+  html+='</div><div style="font-size:12px;color:var(--muted);margin-top:12px;">Clica en una etapa completada per veure el podi · ★ = al pool de fantasy</div>';
   el.innerHTML=html;
 }
 
@@ -457,18 +618,18 @@ function showStageDetail(stageNum){
   const medals=['🥇','🥈','🥉'];
   const top3html=sw&&sw.top3?`<div style="margin-top:14px;">
     <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;">Podi</div>
-    <ul class="top3-list">${(sw.top3||[]).map((r,i)=>{const inp=isInPool(r);return`<li><span class="medal">${medals[i]}</span><span style="${inp?'font-weight:700;':'color:var(--muted);'}">${r}${inp?' ★':''}</span></li>`;}).join('')}</ul>
+    <ul class="top3-list">${(sw.top3||[]).map((r,i)=>{const inp=isInPool(r);const owner=getOwner(r);return`<li><span style="font-size:16px;width:24px;">${medals[i]}</span><span style="flex:1;${inp?'font-weight:700;':''}">${r}${inp?' ★':''}</span>${owner?`<span class="owner-pill">${owner}</span>`:''}</li>`;}).join('')}</ul>
   </div>`:'';
   openModal(`<div class="modal-header"><h2>Etapa ${s.num}</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div style="font-size:14px;font-weight:600;margin-bottom:14px;">${s.name}</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
-      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Data</div><div style="font-weight:600;">${s.date}</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Data</div><div style="font-weight:600;font-size:13px;">${s.date}</div></div>
       <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Tipus</div><span class="type-pill ${TYPE_CLS[s.type]}">${TYPE_LABELS[s.type]||s.type}</span></div>
-      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Distància</div><div style="font-weight:600;">${s.km} km</div></div>
-      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Desnivell</div><div style="font-weight:600;">${s.desnivell.toLocaleString()} m</div></div>
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Km</div><div style="font-weight:600;font-size:13px;">${s.km}</div></div>
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Desnivell</div><div style="font-weight:600;font-size:13px;">${s.desnivell.toLocaleString()}m</div></div>
     </div>
     ${top3html}
-    <div style="font-size:11px;color:var(--muted);margin-top:12px;">★ = corredor al pool de fantasy</div>`);
+    <div style="font-size:11px;color:var(--muted);margin-top:12px;">★ = corredor al pool · Pilla verd = propietari</div>`);
 }
 
 /* ETAPES */
@@ -478,11 +639,19 @@ function renderEtapes(){
   let html=`<table class="sw-table"><thead><tr><th>Etapa</th><th>Data</th><th>Guanyador</th><th>Equip</th><th>Recorregut</th></tr></thead><tbody>`;
   liveData.stage_winners.forEach(sw=>{
     const inPool=isInPool(sw.winner||'');
-    const star=inPool?'<span class="in-pool-star" title="Al pool de fantasy">★</span>':'';
+    const owner=getOwner(sw.winner||'');
+    const star=inPool?'<span class="in-pool-star">★</span>':'';
     const cls=inPool?'rider-in-pool':'rider-not-pool';
-    html+=`<tr><td><span class="stage-num">E${sw.stage}</span></td><td style="font-size:12px;color:var(--muted);">${sw.date||''}</td><td><span class="${cls}">${sw.winner||'—'}${star}</span></td><td style="font-size:12px;color:var(--muted);">${sw.team||''}</td><td style="font-size:12px;color:var(--muted);">${sw.name||''}</td></tr>`;
+    const ownerHtml=owner?`<span class="owner-pill">${owner}</span>`:'';
+    html+=`<tr class="clickable" onclick="showRiderModal('${(sw.winner||'').replace(/'/g,"\\'")}')">
+      <td><span class="stage-num">E${sw.stage}</span></td>
+      <td style="font-size:12px;color:var(--muted);">${sw.date||''}</td>
+      <td><span class="${cls}">${sw.winner||'—'}${star}</span>${ownerHtml}</td>
+      <td style="font-size:12px;color:var(--muted);">${sw.team||''}</td>
+      <td style="font-size:12px;color:var(--muted);">${sw.name||''}</td>
+    </tr>`;
   });
-  html+='</tbody></table><div style="font-size:12px;color:var(--muted);margin-top:12px;">★ = corredor al pool de fantasy</div>';
+  html+='</tbody></table><div style="font-size:12px;color:var(--muted);margin-top:12px;">★ = al pool · Clica per veure el perfil del guanyador</div>';
   el.innerHTML=html;
 }
 
