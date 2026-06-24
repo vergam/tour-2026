@@ -21,8 +21,8 @@ h1{font-size:22px;font-weight:700;color:white;letter-spacing:-.02em;}
 .update-dot{width:7px;height:7px;border-radius:50%;background:#4CAF50;}
 .update-dot.old{background:#FF9800;}
 nav{background:var(--text);border-top:1px solid rgba(255,255,255,.1);}
-.nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;}
-.nav-btn{background:none;border:none;color:rgba(255,255,255,.5);font-size:13px;font-weight:500;padding:10px 16px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;}
+.nav-btn{background:none;border:none;color:rgba(255,255,255,.5);font-size:13px;font-weight:500;padding:10px 14px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;}
 .nav-btn:hover{color:white;}
 .nav-btn.active{color:white;border-bottom-color:var(--jaune);}
 main{max-width:960px;margin:0 auto;padding:24px;}
@@ -31,7 +31,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;}
 .card-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px;}
 .tab-row{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
-.tab{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--muted);}
+.tab{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--muted);}
 .tab:hover{color:var(--text);}
 .tab.active-gc{background:#FFF9C4;border-color:#FFD700;color:#7A5F00;}
 .tab.active-munt{background:#FFEBEE;border-color:#FFCDD2;color:var(--rouge);}
@@ -56,7 +56,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .val-col{text-align:right;font-size:13px;color:var(--muted);}
 .pts-total{text-align:right;font-size:15px;font-weight:700;}
 .vic-btn{background:none;border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:12px;cursor:pointer;color:var(--muted);transition:all .15s;}
-.vic-btn:hover{background:var(--bg2);color:var(--text);}
+.vic-btn:hover{background:var(--bg2);}
 .vic-count{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#FFF9C4;color:#7A5F00;font-size:11px;font-weight:700;}
 .fantasy-row td{cursor:pointer;}
 .rider-mini-badges{display:flex;gap:5px;margin-top:3px;flex-wrap:wrap;}
@@ -64,6 +64,30 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .b-gc{background:#FFF9C4;color:#7A5F00;}
 .b-munt{background:#FFEBEE;color:var(--rouge);}
 .b-sp{background:#E8F5E9;color:var(--vert);}
+
+/* STAGES */
+.stages-list{display:flex;flex-direction:column;gap:6px;}
+.stage-row{display:grid;grid-template-columns:36px 70px 1fr 80px 90px 90px;gap:8px;align-items:center;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);transition:all .15s;}
+.stage-row.done{background:var(--bg2);border-color:transparent;cursor:pointer;}
+.stage-row.done:hover{border-color:var(--border);background:var(--white);}
+.stage-row.next{border-color:var(--jaune);background:#FFFEF5;}
+.stage-row.upcoming{opacity:.65;}
+.stage-num-badge{background:var(--text);color:white;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;text-align:center;}
+.stage-num-badge.done-badge{background:#888;}
+.stage-date{font-size:11px;color:var(--muted);}
+.stage-name{font-size:13px;font-weight:500;}
+.stage-winner-mini{font-size:11px;color:var(--muted);margin-top:2px;}
+.stage-winner-mini.in-pool{color:var(--vert);font-weight:600;}
+.type-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;text-align:center;white-space:nowrap;}
+.type-pla{background:#E3F2FD;color:#1565C0;}
+.type-munt{background:#FFEBEE;color:var(--rouge);}
+.type-cri{background:#F3E5F5;color:#6A1B9A;}
+.type-ondulat{background:#E8F5E9;color:var(--vert);}
+.stage-stat{font-size:12px;color:var(--muted);text-align:right;}
+.stage-stat strong{color:var(--text);font-size:13px;}
+.stages-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.stages-legend span{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px;}
+
 .sw-table{width:100%;border-collapse:collapse;}
 .sw-table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);}
 .sw-table td{padding:8px 10px;font-size:13px;border-bottom:1px solid var(--bg2);}
@@ -71,6 +95,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .sw-table tr:hover td{background:var(--bg2);}
 .stage-num{background:var(--text);color:white;border-radius:4px;padding:2px 7px;font-size:11px;font-weight:700;}
 .in-pool-star{color:var(--jaune);font-size:14px;margin-left:4px;}
+
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
 .player-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
 .player-card.configured{border-color:#C8E6C9;background:#F9FFF9;}
@@ -90,15 +115,13 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .btn-sm{padding:6px 12px;font-size:12px;}
 .btn-ghost{background:transparent;color:var(--muted);}
 .btn-ghost:hover{background:var(--bg2);color:var(--text);}
-.btn-danger{background:#C62828;color:white;border-color:#C62828;}
 .flex-end{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;}
 .alert{padding:10px 14px;border-radius:7px;font-size:13px;margin-bottom:12px;}
 .alert-info{background:#EFF6FF;color:#1E40AF;border:1px solid #BFDBFE;}
 .alert-success{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;}
-.alert-warn{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A;}
 .alert-error{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA;}
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px;}
-.modal-box{background:var(--white);border-radius:14px;padding:24px;max-width:460px;width:100%;max-height:85vh;overflow-y:auto;}
+.modal-box{background:var(--white);border-radius:14px;padding:24px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .modal-header h2{font-size:17px;font-weight:700;}
 .modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);}
@@ -112,17 +135,19 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 .dc-pts{font-size:22px;font-weight:800;}
 .dc-pos{font-size:11px;color:var(--muted);}
 .total-row{background:var(--bg2);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:700;margin-top:12px;}
+.top3-list{list-style:none;margin-top:10px;}
+.top3-list li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--bg2);font-size:13px;}
+.top3-list li:last-child{border-bottom:none;}
+.medal{font-size:16px;width:24px;}
 .no-data{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
 .loading{text-align:center;padding:30px;color:var(--muted);font-size:13px;}
-.lock-banner{background:#1A1A1A;color:rgba(255,255,255,.7);font-size:12px;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;max-width:960px;margin:0 auto;}
-.lock-banner button{background:none;border:1px solid rgba(255,255,255,.3);border-radius:5px;color:rgba(255,255,255,.7);font-size:11px;padding:3px 10px;cursor:pointer;}
-.lock-banner button:hover{background:rgba(255,255,255,.1);}
 .pin-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:16px;letter-spacing:.2em;text-align:center;outline:none;margin:12px 0;}
 .pin-input:focus{border-color:#999;}
+.progress-bar{height:4px;background:var(--bg2);border-radius:2px;margin-bottom:20px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--jaune);border-radius:2px;transition:width .3s;}
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-inner">
     <div>
@@ -131,9 +156,9 @@ main{max-width:960px;margin:0 auto;padding:24px;}
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
       <div class="jerseys">
-        <div class="jersey j-gc" title="General">G</div>
-        <div class="jersey j-munt" title="Muntanya">M</div>
-        <div class="jersey j-sp" title="Sprint">S</div>
+        <div class="jersey j-gc">G</div>
+        <div class="jersey j-munt">M</div>
+        <div class="jersey j-sp">S</div>
       </div>
       <div class="update-info">
         <div class="update-dot" id="update-dot"></div>
@@ -142,16 +167,15 @@ main{max-width:960px;margin:0 auto;padding:24px;}
     </div>
   </div>
 </header>
-
 <nav>
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showScreen('rankings',event)">Classificacions</button>
     <button class="nav-btn" onclick="showScreen('fantasy',event)">Fantasy</button>
-    <button class="nav-btn" onclick="showScreen('etapes',event)">Etapes</button>
+    <button class="nav-btn" onclick="showScreen('recorregut',event)">Recorregut</button>
+    <button class="nav-btn" onclick="showScreen('etapes',event)">Guanyadors</button>
     <button class="nav-btn" onclick="showScreen('setup',event)">Jugadors</button>
   </div>
 </nav>
-
 <main>
 
 <!-- CLASSIFICACIONS -->
@@ -161,9 +185,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
     <button class="tab" onclick="showRankTab('munt',this)">Mallot de Punts — Muntanya</button>
     <button class="tab" onclick="showRankTab('sp',this)">Mallot Verd — Sprint</button>
   </div>
-  <div class="card">
-    <div id="rank-content"><div class="loading">Carregant dades...</div></div>
-  </div>
+  <div class="card"><div id="rank-content"><div class="loading">Carregant...</div></div></div>
 </div>
 
 <!-- FANTASY -->
@@ -174,7 +196,21 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   </div>
 </div>
 
-<!-- ETAPES -->
+<!-- RECORREGUT -->
+<div id="screen-recorregut" class="screen">
+  <div class="card">
+    <div class="card-title">Recorregut — 21 etapes</div>
+    <div class="stages-legend">
+      <span><span class="type-pill type-pla" style="padding:2px 6px;">Pla</span> Esprint</span>
+      <span><span class="type-pill type-munt" style="padding:2px 6px;">Munt.</span> Muntanya</span>
+      <span><span class="type-pill type-ondulat" style="padding:2px 6px;">Ondulat</span> Punxeur</span>
+      <span><span class="type-pill type-cri" style="padding:2px 6px;">CRI</span> Contrarrellotge</span>
+    </div>
+    <div id="recorregut-content"><div class="loading">Carregant...</div></div>
+  </div>
+</div>
+
+<!-- GUANYADORS -->
 <div id="screen-etapes" class="screen">
   <div class="card">
     <div class="card-title">Guanyadors d'etapa</div>
@@ -187,7 +223,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   <div id="setup-locked">
     <div class="card" style="max-width:360px;margin:40px auto;">
       <div class="card-title">Accés restringit</div>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Introdueix la contrassenya per editar els jugadors i els seus corredors.</p>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Introdueix la contrassenya per editar els jugadors.</p>
       <input type="password" class="pin-input" id="pw-input" placeholder="Contrassenya" onkeydown="if(event.key==='Enter')checkPw()">
       <button class="btn btn-primary" style="width:100%;" onclick="checkPw()">Entrar</button>
       <div id="pw-error" style="margin-top:8px;"></div>
@@ -195,7 +231,7 @@ main{max-width:960px;margin:0 auto;padding:24px;}
   </div>
   <div id="setup-unlocked" style="display:none;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
-      <div class="alert alert-info" style="margin:0;flex:1;">Tria 3 corredors per jugador i assigna la seva categoria (GC, Muntanya o Sprint).</div>
+      <div class="alert alert-info" style="margin:0;flex:1;">Tria 3 corredors per jugador i assigna la seva categoria.</div>
       <button class="btn btn-ghost btn-sm" onclick="lockSetup()">Bloquejar</button>
     </div>
     <div class="players-grid" id="players-grid"></div>
@@ -207,35 +243,25 @@ main{max-width:960px;margin:0 auto;padding:24px;}
 </div>
 
 </main>
-
 <script>
 const RIDERS={gc:["Tadej Pogacar","Jonas Vingegaard","Remco Evenepoel","Florian Lipowitz","Paul Seixas","Juan Ayuso","Isaac del Toro","T.H. Johannessen","Tom Pidcock","Mattias Skjelmose","Matteo Jorgenson","Kevin Vauquelin","Cian Uijtdebroeks","Carlos Rodriguez","Mikel Landa"],munt:["Lenny Martinez","Giulio Ciccone","Richard Carapaz","Lorenzo Fortunato","Warren Barguil","Magnus Cort","Romain Gregoire","Oscar Onley","Ben Healy","Ben O'Connor","V. Paret-Peintre","Maxim Van Gils"],sprint:["Jonathan Milan","Jasper Philipsen","Tim Merlier","Biniam Girmay","Arnaud De Lie","Mads Pedersen","Olav Kooij","Paul Magnier","Kaden Groves","Bryan Coquard","M. van der Poel","Jordi Meeus","Anthony Turgis"]};
 const ALL_RIDERS=[...RIDERS.gc,...RIDERS.munt,...RIDERS.sprint];
 const PTS={gc:[25,22,19,16,13,10,7,5,3,1],munt:[18,15,12,10,8,6,4,3,2,1],sprint:[15,12,10,8,6,4,3,2,1,1]};
 const PASSWORD="RutEduBri";
-let liveData=null;
-let currentRankTab='gc';
+const TYPE_LABELS={pla:"Pla",munt:"Muntanya",cri:"Contrarrellotge",ondulat:"Ondulat"};
+const TYPE_CLS={pla:"type-pla",munt:"type-munt",cri:"type-cri",ondulat:"type-ondulat"};
+let liveData=null,currentRankTab='gc';
 
-function loadState(){try{const s=localStorage.getItem('fantasy_tour_2026_v3');if(s)return JSON.parse(s);}catch(e){}return{players:Array.from({length:12},(_,i)=>({id:i+1,name:`Jugador ${i+1}`,gc:'',munt:'',sprint:''})),unlocked:false};}
-function saveState(){try{localStorage.setItem('fantasy_tour_2026_v3',JSON.stringify(state));}catch(e){}}
+function loadState(){try{const s=localStorage.getItem('ftt26v4');if(s)return JSON.parse(s);}catch(e){}return{players:Array.from({length:12},(_,i)=>({id:i+1,name:`Jugador ${i+1}`,gc:'',munt:'',sprint:''})),unlocked:false};}
+function saveState(){try{localStorage.setItem('ftt26v4',JSON.stringify(state));}catch(e){}}
 let state=loadState();
 
 async function loadData(){
-  try{
-    const res=await fetch('data/classifications.json?t='+Date.now());
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    liveData=await res.json();
-  }catch(e){
-    liveData={updated_at:'Sense dades encara',current_stage:0,gc:[],mountain:[],sprint:[],stage_winners:[]};
-  }
-  updateHeader();
-  refreshCurrentScreen();
-}
-
-function updateHeader(){
-  if(!liveData)return;
+  try{const r=await fetch('data/classifications.json?t='+Date.now());liveData=await r.json();}
+  catch(e){liveData={updated_at:'Sense dades',current_stage:0,gc:[],mountain:[],sprint:[],stage_winners:[],stages:[]};}
   document.getElementById('update-dot').className='update-dot'+(liveData.current_stage>0?'':' old');
   document.getElementById('update-text').textContent=liveData.current_stage>0?`Etapa ${liveData.current_stage} · ${liveData.updated_at}`:liveData.updated_at;
+  refreshCurrentScreen();
 }
 
 function showScreen(id,ev){
@@ -245,79 +271,29 @@ function showScreen(id,ev){
   if(ev)ev.target.classList.add('active');
   refreshScreen(id);
 }
-
-function refreshCurrentScreen(){
-  const a=document.querySelector('.screen.active');
-  if(a)refreshScreen(a.id.replace('screen-',''));
-}
-
+function refreshCurrentScreen(){const a=document.querySelector('.screen.active');if(a)refreshScreen(a.id.replace('screen-',''));}
 function refreshScreen(id){
   if(id==='rankings')renderRankings(currentRankTab);
   if(id==='fantasy')renderFantasy();
+  if(id==='recorregut')renderRecorregut();
   if(id==='etapes')renderEtapes();
   if(id==='setup')renderSetupScreen();
 }
 
-/* PASSWORD */
-function checkPw(){
-  const val=document.getElementById('pw-input').value;
-  if(val===PASSWORD){
-    state.unlocked=true;
-    saveState();
-    renderSetupScreen();
-  } else {
-    document.getElementById('pw-error').innerHTML='<div class="alert alert-error">Contrassenya incorrecta.</div>';
-    document.getElementById('pw-input').value='';
-  }
-}
-
-function lockSetup(){
-  state.unlocked=false;
-  saveState();
-  renderSetupScreen();
-}
-
-function renderSetupScreen(){
-  if(state.unlocked){
-    document.getElementById('setup-locked').style.display='none';
-    document.getElementById('setup-unlocked').style.display='block';
-    renderSetup();
-  } else {
-    document.getElementById('setup-locked').style.display='block';
-    document.getElementById('setup-unlocked').style.display='none';
-    document.getElementById('pw-input').value='';
-    document.getElementById('pw-error').innerHTML='';
-  }
-}
-
-/* MATCH RIDER NAME */
 function matchRider(name,arr){
   if(!name||!arr||!arr.length)return -1;
   const n=name.toLowerCase().trim();
   for(let i=0;i<arr.length;i++){
     const rn=(arr[i].name||'').toLowerCase().trim();
     if(n===rn)return i;
-    const nparts=n.split(' ');const rparts=rn.split(' ');
-    const nlast=nparts[nparts.length-1];const rlast=rparts[rparts.length-1];
-    if(nlast===rlast&&nlast.length>3&&(rn.includes(nparts[0])||n.includes(rparts[0])))return i;
+    const np=n.split(' '),rp=rn.split(' ');
+    const nl=np[np.length-1],rl=rp[rp.length-1];
+    if(nl===rl&&nl.length>3&&(rn.includes(np[0])||n.includes(rp[0])))return i;
     if(rn.includes(n)||n.includes(rn))return i;
   }
   return -1;
 }
-
-function isInPool(name){
-  if(!name)return false;
-  const n=name.toLowerCase().trim();
-  for(const r of ALL_RIDERS){
-    const rn=r.toLowerCase().trim();
-    if(n===rn)return true;
-    const nparts=n.split(' ');const rparts=rn.split(' ');
-    const nlast=nparts[nparts.length-1];const rlast=rparts[rparts.length-1];
-    if(nlast===rlast&&nlast.length>3)return true;
-    if(rn.includes(n)||n.includes(rn))return true;
-  }
-  return false;
-}
+function isInPool(name){if(!name)return false;return matchRider(name,ALL_RIDERS.map(r=>({name:r})))>=0;}
 
 /* RANKINGS */
 function showRankTab(cat,btn){
@@ -326,7 +302,6 @@ function showRankTab(cat,btn){
   btn.className='tab active-'+(cat==='munt'?'munt':cat==='sp'?'sp':'gc');
   renderRankings(cat);
 }
-
 function renderRankings(cat){
   const el=document.getElementById('rank-content');
   if(!liveData){el.innerHTML='<div class="loading">Carregant...</div>';return;}
@@ -335,7 +310,11 @@ function renderRankings(cat){
   const valLabel=cat==='gc'?'Temps':'Punts';
   if(!data||!data.length){el.innerHTML='<div class="no-data">Sense dades. El Tour comença el 4 de juliol.</div>';return;}
   const inPoolCount=data.filter(r=>isInPool(r.name)).length;
-  let html=`<div style="font-size:12px;color:var(--muted);margin-bottom:12px;display:flex;gap:16px;flex-wrap:wrap;"><span><span class="pool-dot ${dotCls}"></span>En negreta = al pool de fantasy</span><span style="margin-left:auto;">${inPoolCount}/${data.length} del pool visibles</span></div>
+  let html=`<div style="font-size:12px;color:var(--muted);margin-bottom:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+    <span><span class="pool-dot ${dotCls}"></span>En negreta = al pool de fantasy</span>
+    <span style="color:var(--muted);">Gris = fora del pool</span>
+    <span style="margin-left:auto;">${inPoolCount}/${data.length} del pool visibles</span>
+  </div>
   <table class="lb-table"><thead><tr><th style="width:36px;">#</th><th>Corredor</th><th class="r">${valLabel}</th></tr></thead><tbody>`;
   data.forEach((r,i)=>{
     const inPool=isInPool(r.name);
@@ -362,22 +341,25 @@ function getScore(player){
   const myRiders=[player.gc,player.munt,player.sprint].filter(Boolean);
   (liveData.stage_winners||[]).forEach(sw=>{
     if(!sw.winner)return;
-    myRiders.forEach(r=>{
-      if(matchRider(r,[{name:sw.winner}])>=0)bonusPts+=5;
-    });
+    myRiders.forEach(r=>{if(matchRider(r,[{name:sw.winner}])>=0)bonusPts+=5;});
   });
   return{gcPts,muntPts,spPts,bonusPts,total:gcPts+muntPts+spPts+bonusPts,
-    gcPos:gcIdx>=0?`${gcIdx+1}r`:'11è+',
-    muntPos:muntIdx>=0?`${muntIdx+1}r`:'11è+',
-    spPos:spIdx>=0?`${spIdx+1}r`:'11è+'};
+    gcPos:gcIdx>=0?`${gcIdx+1}r`:'11è+',muntPos:muntIdx>=0?`${muntIdx+1}r`:'11è+',spPos:spIdx>=0?`${spIdx+1}r`:'11è+'};
 }
 
 function renderFantasy(){
   const el=document.getElementById('fantasy-content');
   const active=state.players.filter(p=>p.name&&(p.gc||p.munt||p.sprint));
-  if(!active.length){el.innerHTML='<div class="no-data">Configura els jugadors a la pestanya "Jugadors".</div>';return;}
+  if(!active.length){el.innerHTML='<div class="no-data">Configura els jugadors a "Jugadors".</div>';return;}
   const scored=active.map(p=>({...p,...getScore(p)})).sort((a,b)=>b.total-a.total);
-  let html=`<table class="lb-table"><thead><tr><th style="width:36px;">#</th><th>Jugador / Corredors</th><th class="r">GC</th><th class="r">Munt</th><th class="r">Sprint</th><th class="r">Vict.</th><th class="r">Total</th></tr></thead><tbody>`;
+  const currentStage=liveData?.current_stage||0;
+  const totalStages=21;
+  const pct=Math.round(currentStage/totalStages*100);
+  let html=`<div style="margin-bottom:16px;">
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;"><span>Progrés del Tour</span><span>Etapa ${currentStage}/${totalStages}</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+  </div>
+  <table class="lb-table"><thead><tr><th style="width:36px;">#</th><th>Jugador / Corredors</th><th class="r">GC</th><th class="r">Munt</th><th class="r">Sprint</th><th class="r">Vict.</th><th class="r">Total</th></tr></thead><tbody>`;
   scored.forEach((p,i)=>{
     const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
     const posCls=i===0?'p1':i===1?'p2':i===2?'p3':'';
@@ -404,8 +386,7 @@ function renderFantasy(){
 }
 
 function showPlayerDetail(playerId){
-  const p=state.players.find(x=>x.id===playerId);
-  if(!p)return;
+  const p=state.players.find(x=>x.id===playerId);if(!p)return;
   const s=getScore(p);
   openModal(`<div class="modal-header"><h2>${p.name}</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="detail-grid">
@@ -418,17 +399,76 @@ function showPlayerDetail(playerId){
 }
 
 function showVictories(playerId){
-  const p=state.players.find(x=>x.id===playerId);
-  if(!p||!liveData)return;
+  const p=state.players.find(x=>x.id===playerId);if(!p||!liveData)return;
   const myRiders=[p.gc,p.munt,p.sprint].filter(Boolean);
   const wins=[];
-  (liveData.stage_winners||[]).forEach(sw=>{
-    if(!sw.winner)return;
-    myRiders.forEach(r=>{if(matchRider(r,[{name:sw.winner}])>=0)wins.push({...sw,rider:r});});
-  });
+  (liveData.stage_winners||[]).forEach(sw=>{if(!sw.winner)return;myRiders.forEach(r=>{if(matchRider(r,[{name:sw.winner}])>=0)wins.push({...sw,rider:r});});});
   const rows=wins.map(w=>`<tr><td><span class="stage-num">E${w.stage}</span></td><td style="font-size:12px;color:var(--muted);">${w.date||''}</td><td style="font-size:13px;font-weight:600;">${w.rider}</td><td style="font-size:12px;color:var(--muted);">${w.name||''}</td><td style="text-align:right;font-weight:700;color:var(--vert);">+5</td></tr>`).join('');
   openModal(`<div class="modal-header"><h2>Victòries de ${p.name}</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
-    ${wins.length?`<table class="sw-table"><thead><tr><th>#</th><th>Data</th><th>Corredor</th><th>Etapa</th><th class="r">Pts</th></tr></thead><tbody>${rows}</tbody></table><div class="total-row" style="margin-top:12px;"><span>Total victòries</span><span>+${wins.length*5} pts</span></div>`:'<div class="no-data">Cap victòria d\'etapa encara.</div>'}`);
+    ${wins.length?`<table class="sw-table"><thead><tr><th>#</th><th>Data</th><th>Corredor</th><th>Etapa</th><th class="r">Pts</th></tr></thead><tbody>${rows}</tbody></table><div class="total-row" style="margin-top:12px;"><span>Total</span><span>+${wins.length*5} pts</span></div>`:'<div class="no-data">Cap victòria encara.</div>'}`);
+}
+
+/* RECORREGUT */
+function renderRecorregut(){
+  const el=document.getElementById('recorregut-content');
+  if(!liveData){el.innerHTML='<div class="loading">Carregant...</div>';return;}
+  const stages=liveData.stages||[];
+  if(!stages.length){el.innerHTML='<div class="no-data">Sense dades d\'etapes.</div>';return;}
+
+  const doneStages=stages.filter(s=>s.status==='done').length;
+  const nextStage=stages.find(s=>s.status==='upcoming');
+
+  let html='<div class="stages-list">';
+  stages.forEach(s=>{
+    const isDone=s.status==='done';
+    const isNext=nextStage&&s.num===nextStage.num;
+    const sw=isDone?(liveData.stage_winners||[]).find(w=>String(w.stage)===String(s.num)):null;
+    const winnerInPool=sw&&isInPool(sw.winner);
+    const rowCls=isDone?'done':isNext?'next':'upcoming';
+    const numCls=isDone?'stage-num-badge done-badge':'stage-num-badge';
+    const nextLabel=isNext?'<span style="font-size:10px;background:var(--jaune);color:#7A5F00;border-radius:3px;padding:1px 5px;font-weight:700;margin-left:6px;">PRÒXIMA</span>':'';
+
+    html+=`<div class="stage-row ${rowCls}" ${isDone?`onclick="showStageDetail(${s.num})"`:''}> 
+      <div><span class="${numCls}">${s.num}</span></div>
+      <div class="stage-date">${s.date}</div>
+      <div>
+        <div class="stage-name">${s.name}${nextLabel}</div>
+        ${isDone&&sw?`<div class="stage-winner-mini ${winnerInPool?'in-pool':''}">${winnerInPool?'★ ':''} ${sw.winner}</div>`:''}
+      </div>
+      <div><span class="type-pill ${TYPE_CLS[s.type]||'type-pla'}">${TYPE_LABELS[s.type]||s.type}</span></div>
+      <div class="stage-stat"><strong>${s.km}</strong> km</div>
+      <div class="stage-stat"><strong>${s.desnivell.toLocaleString()}</strong> m ↑</div>
+    </div>`;
+  });
+  html+='</div>';
+  html+=`<div style="font-size:12px;color:var(--muted);margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;">
+    <span>${doneStages} etapes completades</span>
+    <span>${stages.length-doneStages} per disputar</span>
+    <span>★ = guanyador al pool de fantasy</span>
+  </div>`;
+  el.innerHTML=html;
+}
+
+function showStageDetail(stageNum){
+  if(!liveData)return;
+  const s=(liveData.stages||[]).find(x=>x.num===stageNum);
+  const sw=(liveData.stage_winners||[]).find(x=>String(x.stage)===String(stageNum));
+  if(!s)return;
+  const medals=['🥇','🥈','🥉'];
+  const top3html=sw&&sw.top3?`<div style="margin-top:14px;">
+    <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;">Podi</div>
+    <ul class="top3-list">${(sw.top3||[]).map((r,i)=>{const inp=isInPool(r);return`<li><span class="medal">${medals[i]}</span><span style="${inp?'font-weight:700;':'color:var(--muted);'}">${r}${inp?' ★':''}</span></li>`;}).join('')}</ul>
+  </div>`:'';
+  openModal(`<div class="modal-header"><h2>Etapa ${s.num}</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:14px;">${s.name}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Data</div><div style="font-weight:600;">${s.date}</div></div>
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Tipus</div><span class="type-pill ${TYPE_CLS[s.type]}">${TYPE_LABELS[s.type]||s.type}</span></div>
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Distància</div><div style="font-weight:600;">${s.km} km</div></div>
+      <div style="background:var(--bg2);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Desnivell</div><div style="font-weight:600;">${s.desnivell.toLocaleString()} m</div></div>
+    </div>
+    ${top3html}
+    <div style="font-size:11px;color:var(--muted);margin-top:12px;">★ = corredor al pool de fantasy</div>`);
 }
 
 /* ETAPES */
@@ -447,27 +487,27 @@ function renderEtapes(){
 }
 
 /* SETUP */
+function checkPw(){const v=document.getElementById('pw-input').value;if(v===PASSWORD){state.unlocked=true;saveState();renderSetupScreen();}else{document.getElementById('pw-error').innerHTML='<div class="alert alert-error">Contrassenya incorrecta.</div>';document.getElementById('pw-input').value='';}}
+function lockSetup(){state.unlocked=false;saveState();renderSetupScreen();}
+function renderSetupScreen(){
+  if(state.unlocked){document.getElementById('setup-locked').style.display='none';document.getElementById('setup-unlocked').style.display='block';renderSetup();}
+  else{document.getElementById('setup-locked').style.display='block';document.getElementById('setup-unlocked').style.display='none';document.getElementById('pw-input').value='';document.getElementById('pw-error').innerHTML='';}
+}
 function renderSetup(){
-  const grid=document.getElementById('players-grid');
-  grid.innerHTML=state.players.map(p=>{
+  document.getElementById('players-grid').innerHTML=state.players.map(p=>{
     const configured=p.name&&p.gc&&p.munt&&p.sprint;
     return `<div class="player-card ${configured?'configured':''}">
       <div class="player-num">Jugador ${p.id}</div>
       <input type="text" id="pname-${p.id}" value="${p.name}" placeholder="Nom del jugador">
-      <div class="rider-row"><span class="cat-label gc">GC</span>
-        <select id="pgc-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.gc===r?'selected':''}>${r}</option>`).join('')}</select></div>
-      <div class="rider-row"><span class="cat-label munt">Munt.</span>
-        <select id="pmunt-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.munt===r?'selected':''}>${r}</option>`).join('')}</select></div>
-      <div class="rider-row"><span class="cat-label sp">Sprint</span>
-        <select id="psprint-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.sprint===r?'selected':''}>${r}</option>`).join('')}</select></div>
+      <div class="rider-row"><span class="cat-label gc">GC</span><select id="pgc-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.gc===r?'selected':''}>${r}</option>`).join('')}</select></div>
+      <div class="rider-row"><span class="cat-label munt">Munt.</span><select id="pmunt-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.munt===r?'selected':''}>${r}</option>`).join('')}</select></div>
+      <div class="rider-row"><span class="cat-label sp">Sprint</span><select id="psprint-${p.id}"><option value="">— corredor —</option>${ALL_RIDERS.map(r=>`<option value="${r}" ${p.sprint===r?'selected':''}>${r}</option>`).join('')}</select></div>
     </div>`;
   }).join('');
 }
-
 function savePlayers(){
   state.players=state.players.map(p=>({...p,name:document.getElementById(`pname-${p.id}`)?.value||p.name,gc:document.getElementById(`pgc-${p.id}`)?.value||'',munt:document.getElementById(`pmunt-${p.id}`)?.value||'',sprint:document.getElementById(`psprint-${p.id}`)?.value||''}));
-  saveState();
-  renderSetup();
+  saveState();renderSetup();
   showMsg('setup-msg','Jugadors desats correctament.',true);
 }
 
